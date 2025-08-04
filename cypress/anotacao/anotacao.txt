@@ -1,0 +1,33 @@
+23/06/25  - Segunda
+-> Comando para verificar o versionamento: git --version && node --version && npm --version
+
+
+30/06/2025 - segunda 
+-> Comando para instalar o eslint: npm install eslint@8.0 --save-dev
+-> Comando para iniciar o eslint: npx eslint --init
+    -> o Eslint é uma das ferramentas mais populares para fazer análise estática de código;
+    -> Ao execultar o comando é exibido no prompt com algumas perguntas para configurar as verificações no código;
+    -> Ao final da configuração é gerado um arquivo ".eslintrc.json".
+
+
+-> O Eslint possui um pluging para analisar o códigos dos testes com cypress;
+-> Para usa-lo devemos, seguir os seguintes passos:
+    -> Instalar o plugin do Eslint para Cypress;
+    -> Comando para baixar o plugin: npm install eslint-plugin-cypress@2.13.3 --save-dev
+    -> Criar um arquivo chamado de ".eslintrc.json" dentro da pasta de Cypress, assim irá levar em consideração apenas o escopo daquela pasta e práticas recomendas pela
+    organização do Cypress; 
+
+Configuração do arquivo "package.json":
+-> Adicionamos dentro do script alguns comandos que ao serem executados no pront de comando ou "NPM SCRIPT" dentro do VSCode
+-> Exemplo:
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint cypress/**/*.js && eslint cypress.config.js",
+    "lint:fix": "eslint cypress/**/*.js --fix && eslint cypress.config.js --fix"
+  }, 
+-> Comando para executar o Eslint: npm run lint
+    -> O Eslint deve analisar todos os arquivos com extensão ".js" que estão na pasta abaixo de "Cypress". 
+-> comando para executar o Fix do Eslint: npm run lint:fix
+    -> O Eslint deve concertar algumas coisas nos arquivos com ".js".  
+
+-> Existe um plugin no qual irá fazer a analise do código estático automaticamente no VSCode, seu nome é ESlint;
