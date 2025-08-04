@@ -24,9 +24,10 @@ Cypress.Commands.add('guiLogin', (
   cy.intercept('GET', '**/notes').as('getNotes')
   cy.visit('/login')
   cy.get('#email').type(userEmail)
-  cy.get('#password').type(password, {log:false})
+  cy.get('#password').type(password, { log: false })
   cy.contains('button[type="submit"]', 'Login').click()
-  cy.wait('@getNotes', { timeout: 10000})
+  cy.wait('@getNotes', { timeout: 10000 })
+  cy.contains('h1', 'Your Notes').should('be.visible')
 })
 
 Cypress.Commands.add('sessionLogin', (
@@ -36,3 +37,4 @@ Cypress.Commands.add('sessionLogin', (
   const login = () => cy.guiLogin(userEmail, password)
   cy.session(userEmail, login)
 })
+
