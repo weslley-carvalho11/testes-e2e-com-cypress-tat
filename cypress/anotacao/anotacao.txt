@@ -31,3 +31,12 @@ Configuração do arquivo "package.json":
     -> O Eslint deve concertar algumas coisas nos arquivos com ".js".  
 
 -> Existe um plugin no qual irá fazer a analise do código estático automaticamente no VSCode, seu nome é ESlint;
+
+
+05/08/2025 - Terça
+import { faker } from '@faker-js/faker/locale/en'
+-> locate/en é para limitar o escopo de palavras apenas para o inglês para aumentar o desempenho do teste, já que,
+a biblioteca do faker tem muitas palavras. 
+
+Quando fazer um exclusão de item, uma boa prática seria verificar se há algo antes de excluir
+Quando atribuímos uma variável como "Let" podemos atribuir um novo valor para ela no código

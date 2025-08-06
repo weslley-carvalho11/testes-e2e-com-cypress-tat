@@ -11,31 +11,14 @@ describe('Suite de Teste- CRUD de notas', () => {
 
     const note = faker.word.words(5)
     const editNote = faker.word.words(6)
+    let attachFile = false
 
     it('Fazer CRUD de notas', () => {
-        cy.visit('/notes/new')
-
-        cy.get('#content').type(note)
-        cy.contains(note).should('be.visible')
-        cy.contains('button', 'Create').click()
-        cy.wait('@getNotes')
-
-        cy.contains('.list-group-item', note).should('be.visible').click()
-
+        cy.createNote(note)
         cy.wait('@getNote')
-        cy.get('#content').clear()
-        cy.get('#content').type(editNote)
-        cy.contains('button', 'Save').click()
-        cy.wait('@getNotes')
-
-        cy.contains('.list-group-item', note).should('not.exist')
-        cy.contains('.list-group-item', editNote).should('be.visible').click()
-
+        cy.editNote(note, editNote, attachFile)
         cy.wait('@getNote')
-        cy.contains('button', 'Delete').click()
-        cy.wait('@getNotes')
-
-        cy.get('.list-group-item').its('length').should('be.at.least', 1)
-        cy.contains('.list-group-item', editNote).should('not.exist')
+        cy.deleteNote(editNote)
+        cy.wait('@getNote')
     })
 })

@@ -1,5 +1,9 @@
 /// <reference types="cypress"/>
 
+const attachFileHandler = (attachFile) => {
+  cy.get('#file').selectFile('cypress/fixtures/example.json')
+}
+
 Cypress.Commands.add('fillSignupFormAndSubmit', (email, password) => {
   cy.intercept('GET', '**/notes').as('getNotes')
   cy.visit('/signup')
@@ -37,4 +41,43 @@ Cypress.Commands.add('sessionLogin', (
   const login = () => cy.guiLogin(userEmail, password)
   cy.session(userEmail, login)
 })
+
+Cypress.Commands.add('createNote', (note, attachFile = false) => {
+  cy.visit('/notes/new')
+  cy.get('#content').type(note)
+  cy.contains(note).should('be.visible')
+
+  if (attachFile) {
+    attachFileHandler()
+  }
+
+  cy.contains('button', 'Create').click()
+  cy.wait('@getNotes')
+
+  cy.contains('.list-group-item', note).should('be.visible')
+})
+
+Cypress.Commands.add('editNote', (note, editNote, attachFile = false) => {
+  cy.contains('.list-group-item', note).should('be.visible').click()
+  cy.get('#content').clear()
+  cy.get('#content').type(editNote)
+
+  if (attachFile) {
+    attachFileHandler()
+  }
+
+  cy.contains('button', 'Save').click()
+  cy.contains('.list-group-item', note).should('not.exist')
+  cy.contains('.list-group-item', editNote).should('be.visible')
+})
+
+Cypress.Commands.add('deleteNote', (editNote) => {
+  cy.contains('.list-group-item', editNote).should('be.visible').click()
+  cy.contains('button', 'Delete').click()
+  cy.wait('@getNotes')
+
+  cy.get('.list-group-item').its('length').should('be.at.least', 1)
+  cy.contains('.list-group-item', editNote).should('not.exist')
+})
+
 
