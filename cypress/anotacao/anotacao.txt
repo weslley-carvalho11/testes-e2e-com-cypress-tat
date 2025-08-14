@@ -40,3 +40,13 @@ a biblioteca do faker tem muitas palavras.
 
 Quando fazer um exclusão de item, uma boa prática seria verificar se há algo antes de excluir
 Quando atribuímos uma variável como "Let" podemos atribuir um novo valor para ela no código
+
+
+14/08/2025 - Quinta-feira
+A biblioteca do cypress-iframe tem 3 comandos:
+cy.frameLoaded -> Ele vai verificar que o página carregou outra página. Quando o botão possui o 'about:blank' em oputra página. 
+cy.frameLoaded(`url: 'https://google.com') -> Verifica se iframe tem a URL ou parte da URL digitada; 
+cy.frameLoaded('#my-frame') -> Verifica se o iframe com seletor digitado foi carregado
+cy.frameLoaded('#my-frame', `{url: '/join}) -> Verifica se iframe com seletor e URL selecionada foi carregado
+
+Apartir daqui podemos encadear qualquer comando do cypress padrão. 
