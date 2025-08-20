@@ -50,3 +50,10 @@ cy.frameLoaded('#my-frame') -> Verifica se o iframe com seletor digitado foi car
 cy.frameLoaded('#my-frame', `{url: '/join}) -> Verifica se iframe com seletor e URL selecionada foi carregado
 
 Apartir daqui podemos encadear qualquer comando do cypress padrão. 
+
+20/08/2025 - Quarta-feira
+Dentro de "package.json" há um script no qual só roda a spec de "authenticated", pois somente esse teste é influênciado pelo tamanho da tela.
+Uma dúgvida que eu tinha, quanto temos informações sensíveis como e-mail e senha em um arquivo .env no qual será ignorado pelo github, o que faço
+para rodar isso em uma pipeline de testes? 
+Adicionamos as variáveis secretas no github actions e no arquivo de cy.yml adicionamos ao script linhas que irão pegar essas informações
+CYPRESS_USER_EMAIL: ${{secrets.CYPRESS_USER_EMAIL}}  
