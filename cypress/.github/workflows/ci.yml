@@ -31,7 +31,7 @@ jobs:
           CYPRESS_MAILOSAUR_SERVER_ID: ${{ secrets.CYPRESS_MAILOSAUR_SERVER_ID }}
           CYPRESS_MAILOSAUR_API_KEY: ${{ secrets.CYPRESS_MAILOSAUR_API_KEY }}
         with:
-          command: npm test
+          command: npm test:run
   cypress-tests-tablet:
     needs: eslint
     runs-on: ubuntu-22.04
