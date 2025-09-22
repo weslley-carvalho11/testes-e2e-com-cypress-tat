@@ -57,3 +57,7 @@ Uma dúgvida que eu tinha, quanto temos informações sensíveis como e-mail e s
 para rodar isso em uma pipeline de testes? 
 Adicionamos as variáveis secretas no github actions e no arquivo de cy.yml adicionamos ao script linhas que irão pegar essas informações
 CYPRESS_USER_EMAIL: ${{secrets.CYPRESS_USER_EMAIL}}  
+
+22/09/2025 - Segunda-feira
+No arquivo de configuração do CI (Continuos Integration) conseguimos definir que um trabalho depende do outro, isso pode ser usado para rodar primeiro 
+os trabalhos mais rápidos primeiro. Também conseguimos rodar os testes em paralelo. 
