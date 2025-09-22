@@ -1,7 +1,7 @@
 
-// const attachFileHandler = (attachFile) => {
-//   cy.get('#file').selectFile('cypress/fixtures/example.json')
-// }
+const attachFileHandler = () => {
+  cy.get('#file').selectFile('cypress/fixtures/example.json')
+}
 
 Cypress.Commands.add('fillSignupFormAndSubmit', (email, password) => {
   cy.intercept('GET', '**/notes').as('getNotes')
